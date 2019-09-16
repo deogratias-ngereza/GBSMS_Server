@@ -1,0 +1,122 @@
+<div ng-if="main_loader">
+        <!-- display full page loader-->
+            <div ng-include="'com/dist/ng/views/components/full_loading_page.html'"></div>
+        <!-- /display full page loader-->
+</div>
+
+
+
+<div ng-if="!main_loader">
+
+
+    <!--<div class="row">
+        <center><img ng-src="com/dist/img/com_back1.png"></center>
+        <center><h5 class="green-text">Welcome to Commission App</h5></center>
+    </div>-->
+
+    <!-- small loading effect-->
+    <div ng-if= "loading" class="row">
+         
+        <center>
+            
+            <div class="preloader-wrapper small active">
+                <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+                </div>
+            </div>
+
+        </center> 
+    </div>
+    <!-- /small loading effect-->
+
+
+
+    <!-- data -->
+    <div ng-if= "!loading" class="row">
+
+
+        <div class="col s1"></div>
+        <div class="col s10">
+            <center>
+            <div class="card light-blue lighten-4">
+                <div class="card-content orange-text" ng-init="basic_view = 0">
+                    <span class="card-title black-text">
+                  
+
+                        <a ng-click="basic_view == 1 ? basic_view = 0 : basic_view = 1"><img ng-src="com/dist/img/icons/plus.png"></a>&nbsp&nbsp
+                        <b>GENERAL OVERVIEW</b>
+                        &nbsp&nbsp
+                           <a data-target="select_date_modal" class="modal-trigger">
+                              <img ng-src="com/dist/img/icons/calendar.png">
+                            </a>
+                            &nbsp&nbsp&nbsp&nbsp
+                            <span ng-if="dateChangeLoader"><img ng-src="com/dist/img/loaders/ajax-loader-1.gif"></span>
+                    </span>
+                    <p>
+                        <ul ng-if="basic_view" class="collection">
+                            <li class="collection-item light-green black-text">Sales                    :  <h4>{{ GlobalOBJ.total_sales | currency : "Tshs " : 2}}</h4></li>
+                            <li class="collection-item green-text">Commissions   :  <b class="orange-text">{{ GlobalOBJ.total_commissions | currency : "Tshs " : 2}}</b></li>
+                            <li class="collection-item blue-text">Duration :  {{ GlobalOBJ.start_date }} - {{ GlobalOBJ.end_date }}</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            </center>
+        </div>
+        <div class="col s1">
+        </div>
+    </div>
+
+
+    <div ng-if= "!loading" class="row">
+        <div class="col s12">
+             <table class="striped">
+                <thead>
+                    <tr>
+                        <th data-field="service_name">Service Name</th>
+                        <th data-field="sales">Sales</th>
+						<th data-field="commission rate">Commission Rate</th>
+                        <th data-field="commission">Com Value</th>
+                        <th data-field="action">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="myRow" ng-repeat="service in GlobalOBJ.reg_services" repeat-done="initModals()">
+                        <td><a class="blue-text" ui-sref="app.service_name({ name : service.service_name })">
+						<img ng-src="com/dist/img/icons/setting.png">&nbsp{{ customServiceName(service.service_name) }}</a></td>
+                        <td>{{ service.total_sales | currency : "" : 2 }}</td>
+						<td class="green-text">{{ service.rate}} %</td>
+                        <td>{{ service.total_commission  | currency : "" : 2 }}</td>
+                        <td><a ui-sref="app.service_name({ name : service.service_name })" class="orange-text"> more </a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+    <!-- display select date modal-->
+            <div ng-include="'com/dist/ng/views/modals/select_date_modal.html'"></div>
+      <!-- /display select date modal -->
+
+
+
+

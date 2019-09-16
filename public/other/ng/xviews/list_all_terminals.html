@@ -1,0 +1,109 @@
+    <div ng-if="main_loader">
+          <!-- display full page loader-->
+                <div ng-include="'com/dist/ng/views/components/full_loading_page.html'"></div>
+          <!-- /display full page loader-->
+    </div>
+
+
+    <div ng-if="!main_loader">
+
+
+              <!-- display paginator-->
+                <div ng-include="'com/dist/ng/views/components/paginator.html'"></div>
+          <!-- /display pagenator-->
+
+              <table class="striped">
+                <thead>
+                  <tr>
+                      <th data-field="id">ID</th>
+                      <th data-field="ip">IP</th>
+                      <th data-field="retailer_name">Retailer Name</th>
+                      <th data-field="mobile1">Mobile</th>
+                      <th data-field="action">Action</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  
+                  <tr class="myRow scale-fade" ng-repeat="terminal in TerminalListOBJ.data" repeat-done="initModals()">
+                    <td><a class="blue-text" ui-sref="app.terminal_id({ tid : terminal.id })">{{ terminal.id }}</a></td>
+                    <td>{{ terminal.ip }}</td>
+                    <td><img ng-src="com/dist/img/icons/person_1.png">&nbsp{{ terminal.retailer_name }}</td>
+                    <td>{{ terminal.mobile1 }}</td>
+
+                    <td><a data-target="modal2" ng-click="viewInModal(terminal)" class="modal-trigger">
+                      <img ng-src="com/dist/img/icons/magnifier.png">
+                    </a></td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+
+
+              <!-- display paginator-->
+                <div ng-include="'com/dist/ng/views/components/paginator.html'"></div>
+          <!-- /display pagenator-->
+
+    </div>
+
+
+
+
+
+                <!-- display modal->
+                <div ng-include="'com/dist/ng/views/modals/selected_terminal_modal.html'"></div>
+                <!- /display modal-->
+
+
+
+ <!-- Modal Structure -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+
+      <div class="row">
+        <div class="col s6">
+            <center>
+              <img src="com/dist/img/com_modal_1.png">
+            </center>
+            <br><br>
+            <center>
+                <a ui-sref="app.terminal_id({ tid : TerminalModalOBJ.id })" class="modal-action modal-close waves-effect waves-light orange btn btn-large"><i class="material-icons right">toc</i>View Transactions</a><br><br>
+                <a class="modal-action modal-close waves-effect waves-light blue btn btn-large"><i class="material-icons right">toc</i>Dismiss</a><br><br>
+                <a class="modal-action modal-close" ui-sref="app.search">
+                  <img ng-src="com/dist/img/icons/magnifier.png">
+                  Search
+                </a>
+            </center>
+            
+        </div>
+        <div class="col s6">
+              <div class="chip">
+                <img src="com/dist/img/com_logo.png" alt="Contact Person">
+                {{ TerminalModalOBJ.id }}
+              </div>
+              
+              <ul class="collection with-header">
+                <li class="collection-header active light-blue lighten-1"><h4><img ng-src="com/dist/img/icons/file_2.png">&nbsp&nbspInfo</h4></li>
+                <li class="collection-item">Name         :  {{ TerminalModalOBJ.retailer_name }}</li>
+                <li class="collection-item">IP  :  {{ TerminalModalOBJ.ip }}</li>
+                <li class="collection-item">Retailer Code :  {{ TerminalModalOBJ.retailer_code }}</li>
+                <li class="collection-item">Address :  {{ TerminalModalOBJ.address }}</li>
+                <li class="collection-item">mobile 1 :  {{ TerminalModalOBJ.mobile1 }}</li>
+                <li class="collection-item">mobile 2 :  {{ TerminalModalOBJ.mobile2 }}</li>
+                <li class="collection-item">Address :  {{ TerminalModalOBJ.address }}</li>
+                <li class="collection-item">created date :  {{ TerminalModalOBJ.created_at }}</li>
+                <li class="collection-item">connected date :  {{ TerminalModalOBJ.connected_at }}</li>
+                <li class="collection-item">Active :  {{ TerminalModalOBJ.active }}</li>
+              </ul>
+            
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">Dismiss</a>
+    </div>
+  </div>
+  
+<!--/modals-->
+

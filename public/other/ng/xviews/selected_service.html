@@ -1,0 +1,110 @@
+    <div ng-if="main_loader">
+          <!-- display full page loader-->
+                <div ng-include="'com/dist/ng/views/components/full_loading_page.html'"></div>
+          <!-- /display full page loader-->
+    </div>
+
+
+    <div ng-if="!main_loader">
+        
+        <div class="row">
+            <div class="col s1"></div>
+            <div class="col s10">
+                <div class="card light-blue lighten-4">
+                    <div class="card-content orange-text" ng-init="basic_view = 0">
+                        
+                        <span class="card-title black-text">
+                            
+                            
+                            <a ng-click="basic_view == 1 ? basic_view = 0 : basic_view = 1">
+                                <img ng-src="com/dist/img/icons/plus.png">
+                                </a>&nbsp&nbsp
+                            NAME : <b>{{ customServiceName(serviceNAME) }}</b>&nbsp&nbsp
+                           <a data-target="select_date_modal" class="modal-trigger">
+                              <img ng-src="com/dist/img/icons/calendar.png">
+                            </a>
+                            <a ng-if="0" data-target="test" class="modal-trigger">
+                              <img ng-src="com/dist/img/icons/plus.png">
+                            </a>
+                            &nbsp&nbsp&nbsp&nbsp
+                            <span ng-if="dateChangeLoader"><img ng-src="com/dist/img/loaders/ajax-loader-1.gif"></span>
+                        </span>
+                        <p>
+                            <ul  ng-if="basic_view" class="collection">
+                                <li class="collection-item light-blue black-text">Sales                    :  <b>{{ serviceOBJ.total_sales | currency : "Tshs " : 2}}</b></li>
+                                <li class="collection-item green-text">Commissions   :  {{ serviceOBJ.total_commissions | currency : "Tshs " : 2}}</li>
+                                <li class="collection-item light-green black-text">Transactions   :  <b>{{ serviceOBJ.transactions.total }}</b>  (<i>selected Dates</i>)</li>
+                                 <li class="collection-item green-text">Rate   :  {{serviceOBJ.commission_rate}}  %</li>
+                                 <li class="collection-item orange-text">Date  :  {{startDate }}   --  {{endDate}} </li>
+                                
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s1"></div>
+        </div>
+            
+        
+       
+
+        <div class="row" ng-if="1">
+            <div class="col s12">
+                 <table class="striped">
+                    <thead>
+                        <tr>
+                            <th data-field="id">ID</th>
+                            <th data-field="transaction amount">Amount</th>
+                            <th data-field="commission rate">Com Value</th>
+                            <th data-field="status">Trans Date</th>
+                            <th data-field="responce">Responce</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                            
+                            <tr class="myRow" ng-repeat="transaction in serviceOBJ.transactions.data" repeat-done="initModals()">
+                                <td><a class="blue-text" ui-sref="app.terminal_id({ tid : transaction.id })"><img ng-src="com/dist/img/icons/arrow_4.png">&nbsp{{ transaction.id }}</a></td>
+                                <td>{{ transaction.amt | currency : "" : 2 }}</td>
+                                <td>{{ transaction.commission  | currency : "" : 2 }}</td>
+                                <td><i class="orange-text">{{ transaction.time }}</i></td>
+                                <td>
+                                    <img ng-if="transaction.responce_code == '0' || transaction.responce_code == '20' || transaction.responce_code == '00'" ng-src="com/dist/img/icons/success.png">
+                                    <img ng-if="transaction.responce_code == '1' || transaction.responce_code == '30'" ng-src="com/dist/img/icons/fail.png">
+                                    <img ng-if="transaction.responce_code == '-1' || transaction.responce_code == '30'" ng-src="com/dist/img/icons/warning.png">
+                                </td>
+                            </tr>
+
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+
+
+         
+
+
+          <!-- display paginator-->
+                <div ng-include="'com/dist/ng/views/components/paginator.html'"></div>
+          <!-- /display pagenator-->
+
+          
+
+
+    </div>
+   
+   
+
+
+   <!-- display select date modal-->
+            <div ng-include="'com/dist/ng/views/modals/select_date_modal.html'"></div>
+      <!-- /display select date modal -->
+      <!-- display select date modal-->
+            <!--<div ng-include="'com/dist/ng/views/modals/test.html'"></div>-->
+      <!-- /display select date modal -->
+
+
+
+
+

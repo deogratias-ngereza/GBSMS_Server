@@ -1,0 +1,50 @@
+<script>
+  $(document).ready(function() {
+    $('.modal-trigger').leanModal();
+  });
+</script>
+              <table class="striped">
+                <thead>
+                  <tr>
+                      <th data-field="id">Terminal ID</th>
+                      <th data-field="termina name"> Terminal Name</th>
+                      <th data-field="sales">Sales</th>
+                      <th data-field=" commissions">Commissions</th>
+                      <th data-field=" action">Action</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>0TZCOM123</td>
+                    <td>Alvin</td>
+                    <td>Tshs 1,200,000</td>
+                    <td>Tshs 1000</td>
+                    <td><a data-target="modal1" class="modal-trigger waves-effect waves-light teal accent-3 btn btn-small"><i class="material-icons">send</i></a></td>
+                  </tr>
+                  <tr>
+                    <td>1TZCOM123</td>
+                    <td>Jellybean</td>
+                    <td>Tshs 1,200,000</td>
+                    <td>Tshs 1000</td>
+                    <td><a class="waves-effect waves-light teal accent-3 btn btn-small"><i class="material-icons">send</i></a></td>
+                  </tr>
+                  <tr>
+                    <td>2TZCOM123</td>
+                    <td>Jonathan</td>
+                    <td>Tshs 1,200,000</td>
+                    <td>Tshs 1000</td>
+                    <td><a class="waves-effect waves-light teal accent-3 btn btn-small"><i class="material-icons">send</i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+
+
+                <!-- display modal-->
+                <div ng-include="'com/dist/ng/views/modals/selected_terminal_modal.html'"></div>
+                <!-- /display modal-->
+
+                
+

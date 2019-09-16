@@ -1,0 +1,86 @@
+<!-- loan purpose form starts here-->
+<div id="products-bg" ng-controller="GP_LoanStep1Controller">
+    <div id="products-bg-overlay"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="about-bg-heading">
+                <h2>Get the best loan offer!</h2>
+                <h3>Compare Loans online and find best Loan Offers for you.</h3>
+            </div>
+
+            <!-- form -->
+            <div class="row" style="padding:30px;align:center;">
+
+                <!-- loading status -->
+                <center ng-if="loadingStatus">
+                    <img src="./dist/images/loaders/eclipse.svg" class="img-responsive" width="70" height="70"></img>
+                    <br><br>
+                    <span><i>{{loadingMsg}}</i></span>
+                    <br>
+                    <br>
+                    <button ng-click="retry()" class="btn btn-warning btn-sm">Retry</button>
+                </center>
+
+
+
+
+                <form ng-if="!loadingStatus" class="form-horizontal">
+
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <select ng-model="selectedPurpose" ng-init="selectedPurpose = '-1'" ng-change="purposeChanged()" class="form-control" id="Loan_purpose" name="Loan_purpose" title="Please choose your prefered loan purpose!">
+                                
+                                <option value="-1">Please select your purpose</option>
+                                <option ng-repeat="p in list_of_purposes" value="{{p.p_id}}">{{p.p_name}}</option>
+                                
+				            </select>
+                        </div>
+                    </div>
+                    <div ng-if="showSubLoanCatStatus" class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <select ng-model="selectedSubPurpose" ng-init="selectedSubPurpose = '-1'" ng-change="sub_purposeChanged()" class="form-control" id="Sub_loan_purpose" name="Loan_purpose" title="Please choose your prefered loan purpose!">
+                                
+                                <option value="-1">Please select loan type</option>
+                                <option ng-repeat="p in list_of_sub_purposes" value="{{p.loan_id}}">{{p.loan_name}}</option>
+                                
+				            </select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <input ng-model="selectedAmount" type="text" onkeyup="this.value=add_commas(this.value);" class="form-control" id="Loan_amount" title="Please Enter Amount Starting TZS 5,000,000/-" name="Loan_amount" placeholder="Enter Loan Amount" required>
+                        </div>
+                    </div>
+
+                    <div ng-if="showEmptyEmailField" class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <input ng-model="selectedMail" type="email" class="form-control" id="Email_address" title="Provide your valid email Id to proceed!" name="Email_address" placeholder="Enter E-mail Address" required>
+                        </div>
+                    </div>
+                    <div ng-if="!showEmptyEmailField" class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <input ng-model="selectedMail" type="email" class="form-control" id="Email_address" title="Provide your valid email Id to proceed!" name="Email_address" placeholder="Enter E-mail Address" readonly>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <a class="hvr-grow"><button ng-click="goToStep2()" class="btn btn-default" id="bonyeza">Compare Now</button></a>
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div>
+            <!-- /form -->
+
+        </div>
+    </div>
+</div>

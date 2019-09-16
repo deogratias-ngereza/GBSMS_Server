@@ -1,0 +1,198 @@
+<style>
+    .nav-tabs-dropdown {
+  display: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.nav-tabs-dropdown:before {
+  content: "\e114";
+  font-family: 'Glyphicons Halflings';
+  position: absolute;
+  right: 30px;
+}
+
+@media screen and (min-width: 769px) {
+  #nav-tabs-wrapper {
+    display: block!important;
+  }
+}
+@media screen and (max-width: 768px) {
+    .nav-tabs-dropdown {
+        display: block;
+    }
+    #nav-tabs-wrapper {
+        display: none;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        text-align: center;
+    }
+   .nav-tabs-horizontal {
+        min-height: 20px;
+        padding: 19px;
+        margin-bottom: 20px;
+        background-color: #f5f5f5;
+        border: 1px solid #e3e3e3;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+   }
+    .nav-tabs-horizontal  > li {
+        float: none;
+    }
+    .nav-tabs-horizontal  > li + li {
+        margin-left: 2px;
+    }
+    .nav-tabs-horizontal > li,
+    .nav-tabs-horizontal > li > a {
+        background: transparent;
+        width: 100%;
+    } 
+    .nav-tabs-horizontal  > li > a {
+        border-radius: 4px;
+    }
+    .nav-tabs-horizontal  > li.active > a,
+    .nav-tabs-horizontal  > li.active > a:hover,
+    .nav-tabs-horizontal  > li.active > a:focus {
+        color: #ffffff;
+        /*background-color: #428bca;*/
+        background-color: orangered;
+    }
+}
+
+/*custom*/
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: rgb(210, 156, 64);
+}
+</style>
+
+<script>
+    $('.nav-tabs-dropdown').each(function(i, elm) {
+    
+    $(elm).text($(elm).next('ul').find('li.active a').text());
+    
+});
+  
+$('.nav-tabs-dropdown').on('click', function(e) {
+
+    e.preventDefault();
+    
+    $(e.target).toggleClass('open').next('ul').slideToggle();
+    
+});
+
+$('#nav-tabs-wrapper a[data-toggle="tab"]').on('click', function(e) {
+
+    e.preventDefault();
+    
+    $(e.target).closest('ul').hide().prev('a').removeClass('open').text($(this).text());
+      
+});
+</script>
+
+
+
+                <!-- loading status ->
+                <center ng-if="1">
+                    <img src="./dist/images/loaders/eclipse.svg" class="img-responsive" width="70" height="70"></img>
+                    <br><br>
+                    <span><i>{{loadingMsg}}</i></span>
+                    <br>
+                    <br>
+                    <button ng-click="retry()" class="btn btn-warning btn-sm">Retry</button>
+                </center>-->
+
+
+<div class="container" style="background-color:white;min-height:500px;padding:10px;">
+    
+    <div class="row">
+        <div class="col-xs-6">
+                <h2><small></small></h2>
+        </div>
+        <div class="col-xs-6" align="right">
+            <img src="dist/images/my_get_pesa.png" class="img-responsive" width="80" height="80">
+        </div>
+    </div>
+    
+    
+    <div class="row">
+
+        <div class="col-sm-3">
+            <a href="#" class="nav-tabs-dropdown btn btn-block btn-primary">My Account</a>
+            <ul id="nav-tabs-wrapper" class="nav nav-tabs nav-pills nav-stacked well">
+                <li class="active"><a ng-click="goToPage('ACCOUNT_INFO')" target="self" href="#vtabAccount" data-toggle="tab">Account</a></li>
+                <li><a ng-click="goToPage('ACCOUNT_INFO_EDIT')" target="self" href="#vtabAccountEdit" data-toggle="tab">Edit info</a></li>
+                <li><a target="self" href="#vtabReqLoans" data-toggle="tab">Requested Loans</a></li>
+                <li><a target="self" href="#vtabOnHandLoans" data-toggle="tab">OnHand Loans</a></li>
+                <li><a target="self" href="#vtabCompletedLoans" data-toggle="tab">Completed Loans</a></li>
+                <li><a target="self" href="#vtabOther" data-toggle="tab">Other</a></li>
+                <li><a target="self" href="#vtabHelp" data-toggle="tab">Help</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-9">
+            <div class="tab-content">
+
+                <!-- tab1 -->
+                <div role="tabpanel" class="tab-pane fade" id="vtabAccount" ng-controller="GP_AccountInfoDashController">
+                     <div ng-include="'./dist/ng/views/dash/account_info.html'"></div>
+                </div>
+                <!-- /tab1 -->
+
+
+
+
+                <!-- tab2 -->
+                <div role="tabpanel" class="tab-pane fade" id="vtabAccountEdit" ng-controller="GP_AccountInfoEditController">
+                    <div ng-include="'./dist/ng/views/dash/account_info_edit.html'"></div>
+                </div>
+                <!-- /tab2 -->
+
+
+
+
+                <!-- tab3 -->
+                <div role="tabpanel" class="tab-pane fade in active" id="vtabReqLoans">
+                    <h3>Req Loans</h3>
+                    <div ng-include="'./dist/ng/views/dash/req_loans.html'"></div>
+                </div>
+                <!-- tab3 -->
+
+
+                <!-- tab4 -->
+                <div role="tabpanel" class="tab-pane fade" id="vtabOnHandLoans">
+                        <h3>OnHand loans </h3>
+                        <div ng-include="'./dist/ng/views/dash/onhand_loans.html'"></div>
+                </div>
+                <!-- /tab4 -->
+
+
+                
+                <!-- tab5 -->
+                <div role="tabpanel" class="tab-pane fade" id="vtabCompletedLoans">
+                        <h3>Completed Loans </h3>
+                        <div ng-include="'./dist/ng/views/dash/completed_loans.html'"></div>
+                </div>
+                <!-- /tab5 -->
+
+
+                 <!-- tab1 -->
+                 <div role="tabpanel" class="tab-pane fade" id="vtabOther">
+                        <h3>Other</h3>
+                        <pre>
+                            <code class="language-html" data-lang="html">
+                                <p><span><</span>a <span style="color: #4f9fcf">href=</span><span style="color: #d44950;">"#"</span> <span style="color: #4f9fcf">class=</span><span style="color: #d44950;">"nav-tabs-dropdown btn btn-block btn-primary"</span><span>></span>Tabs<span><span><</span>/<span>a></span></span><br/><span><span><</span>ul</span> <span style="color: #4f9fcf">id=</span><span style="color: #d44950;">"nav-tabs-wrapper"</span> <span style="color: #4f9fcf">class=</span><span style="color: #d44950;">"nav nav-tabs nav-pills nav-stacked wells"</span><span>>...</ul></span></p>
+                            </code>  
+                        </pre>
+                    </div>
+                    <!-- /tab1 -->
+
+
+
+            </div>
+        </div>
+    </div>
+
+        
+ </div>

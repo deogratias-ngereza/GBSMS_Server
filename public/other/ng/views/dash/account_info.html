@@ -1,0 +1,34 @@
+
+
+<div class="row" style="padding:10px;">
+    <blockquote style="border-left: 5px solid #f37422;;background-color:#f7f3f1;">
+        <dl class="dl-horizontal">
+            <dt>Username</dt><dd> {{ user_info.username }} </dd>
+            <dt>Email</dt><dd> {{ user_info.email }} </dd>
+            <dt>Registered</dt><dd> {{ user_info.created_at }} </dd>
+        </dl>
+        <center><a >Edit Password</a></center>
+        
+    </blockquote>
+    <br>
+    <blockquote style="border-left: 5px solid orange;background-color:#f7f3f1;">
+            <dl class="dl-horizontal">
+                <dt>FirstName</dt><dd> {{ user_info.profile.first_name }} </dd>
+                <dt>LastName</dt><dd> {{ user_info.profile.last_name }} </dd>
+                <dt>Contact</dt><dd> {{ user_info.profile.contact }} </dd>
+                <dt>Bank</dt><dd> {{ user_info.profile.bank_name }} </dd>
+                <dt>City</dt><dd> {{ user_info.profile.city }} </dd>
+                <dt>WorkStation</dt><dd> {{ user_info.profile.workstation }} </dd>
+                <dt>Occupation</dt><dd> {{ user_info.profile.occupation }} </dd>
+                <dt>Monthly Net Salary</dt><dd> {{ user_info.profile.monthly_net_salary }} </dd>
+                <dt>Time At Job</dt><dd> {{ user_info.profile.time_at_job }} </dd>
+                <dt>Date of birth</dt><dd> {{ user_info.profile.dob }} </dd>
+                <dt>Having Other Loans</dt><dd> {{ user_info.profile.other_loan }} </dd>
+                <dt>Status</dt><dd> {{ user_info.profile.status }} </dd>
+                <dt>Short Story</dt><dd> {{ user_info.profile.short_story }} </dd>
+                <dt>Description</dt><dd> {{ user_info.profile.more_description }} </dd>
+                <dt>Summary</dt><dd> {{ user_info.profile.summary }} </dd>
+                    
+            </dl>
+        </blockquote>
+</div>

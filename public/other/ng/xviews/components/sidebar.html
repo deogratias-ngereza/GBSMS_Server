@@ -1,0 +1,41 @@
+              
+<div class="chip">
+    <img ng-src="com/dist/img/com_logo.png">
+    {{ username }}
+    </div>
+
+    <div class="collection">
+        <a ui-sref="app" class="collection-item" ng-class=" 1 ? 'active light-blue lighten-1' : ''">
+            <img ng-src="com/dist/img/icons/home.png">&nbsp
+            <span>Home</span>
+            
+        </a>
+        <a ui-sref="app.search" class="collection-item">
+            <img ng-src="com/dist/img/icons/magnifier.png">&nbsp
+            Search
+        </a>
+        <a ui-sref="app.terminal_list" class="collection-item">
+            <img ng-src="com/dist/img/icons/pc_1.png">&nbsp
+            Terminals List
+        </a>
+        <a ui-sref="app.services_list" class="collection-item">
+            <img ng-src="com/dist/img/icons/list_1.png">&nbsp
+            Services List
+        </a>
+        <a ui-sref="app.calculator" class="collection-item">
+            <img ng-src="com/dist/img/icons/setting.png">&nbsp
+            Com Calculator
+        </a>
+        <a ui-sref="app.about" class="collection-item">
+            <img ng-src="com/dist/img/icons/about_1.png">&nbsp
+            About
+        </a>
+        <a ng-click="logout()" class="collection-item">
+            <img ng-src="com/dist/img/icons/logout_2.png">&nbsp
+            Logout
+        </a>
+    </div>
+
+    <div class="row" ng-if="1">
+       <center><img src="com/dist/img/com_back1.png"></center>
+    </div>

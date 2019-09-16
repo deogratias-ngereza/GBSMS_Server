@@ -1,0 +1,21 @@
+element.style {
+    background-color: #f37422;
+}
+
+body {
+    background-color: #f37422;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #f37422;
+    border-color: rgba(164, 106, 46, 0.76);
+}
+a {
+    color: #f37422;
+}
+a:hover {
+    color: rgba(164, 106, 46, 0.76);
+}
+
+

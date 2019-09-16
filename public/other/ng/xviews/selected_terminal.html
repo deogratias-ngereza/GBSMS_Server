@@ -1,0 +1,122 @@
+    <div ng-if="main_loader">
+          <!-- display full page loader-->
+                <div ng-include="'com/dist/ng/views/components/full_loading_page.html'"></div>
+          <!-- /display full page loader-->
+    </div>
+
+
+
+    <div ng-if="!main_loader">
+
+        
+        <div class="row">
+            <div class="col s1"></div>
+            <div class="col s10">
+                <div class="card light-blue lighten-4">
+                    <div class="card-content orange-text" ng-init="basic_view = 0">
+                         <a data-target="select_service_modal" class="modal-trigger">
+                          <img ng-src="com/dist/img/icons/setting.png">
+                        </a>
+                        <a ng-click="basic_view == 1 ? basic_view = 0 : basic_view = 1"><img ng-src="com/dist/img/icons/plus.png"></a>&nbsp&nbsp<span class="card-title black-text">ID : <b>{{ TerminalBasicOBJ.id }}  - ( {{ customServiceName(TerminalOBJ.selected_service) }} )</b></span>
+                        <p>
+                            <ul ng-if="basic_view" class="collection">
+                                <li class="collection-item light-blue black-text">Sales (overall)                   :  <b>{{ TerminalOBJ.total_sales | currency : "Tshs " : 2}}</b></li>
+                                <li class="collection-item green-text">Commissions  (overall)  :  {{ TerminalOBJ.total_commissions | currency : "Tshs " : 2}}</li>
+
+                                <li class="collection-item light-green black-text">Sales (per service)                   :  <b>{{ TerminalOBJ.total_sales_per_service | currency : "Tshs " : 2}}</b></li>
+                                <li class="collection-item green-text">Commissions  (per service)  :  {{ TerminalOBJ.total_commissions_per_service | currency : "Tshs " : 2}}</li>
+
+                                <li class="collection-item light-blue black-text">Transactions   :  <b>{{ TerminalOBJ.transactions.total }}</b>  (<i>per service mentioned</i>)</li>
+                                <li class="collection-item darken-4-text"> OPerator Name  :  {{ TerminalBasicOBJ.operator }} </li>
+                                <li class="collection-item purple-text">State  :  {{ TerminalBasicOBJ.state_name }}  </li>
+                                <li class="collection-item oange-text">Region  :  {{ TerminalBasicOBJ.region_name }}  </li>
+                                <li class="collection-item blue-text">IP :  {{ TerminalBasicOBJ.ip }} </li>
+                                <li class="collection-item darken-4-text">Address :  {{ TerminalBasicOBJ.address }} </li>
+                                <li class="collection-item darken-4-text">phone1 :  {{ TerminalBasicOBJ.phone1 }} </li>
+                                <li class="collection-item darken-4-text">phone2 :  {{ TerminalBasicOBJ.phone2 }} </li>
+                                <li class="collection-item light-blue black-text">Date  :  {{startDate }}   --  {{endDate}} </li>
+                            </ul>
+                        </p>
+                        &nbsp&nbsp
+                        <a data-target="select_date_modal" class="modal-trigger">
+                            <img ng-src="com/dist/img/icons/calendar.png">
+                        </a>
+                        <a ng-if="0" data-target="test" class="modal-trigger">
+                            <img ng-src="com/dist/img/icons/plus.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s1"></div>
+        </div>
+            
+        
+        <div class="row">
+            <div class="col s12">
+                 <table class="striped">
+                    <thead>
+                        <tr>
+                            <th data-field="date">ID</th>
+                            <th data-field="transaction amount">Amount</th>
+							<th data-field="commission rate">Com Rate</th>
+                            <th data-field="commission amount">Com Value</th>
+                            <th data-field="status">Trans Time</th>
+                            <th data-field="response">Response</th>
+                            <!--<th data-field="service">Service</th>-->
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                            
+                            <tr class="myRow" ng-repeat="transaction in TerminalOBJ.transactions.data" repeat-done="initModals()">
+                                <td>{{ transaction.id }}</td>
+                                <td>{{ transaction.amt | currency : "" : 2 }}</td>
+								<td class="green-text">{{ transaction.commission /  transaction.amt}}  %</td>
+                                <td>{{ transaction.commission  | currency : "" : 2 }}</td>
+                                
+                                <td><i class="orange-text">{{ transaction.time }}</i></td>
+                                
+                                <td>
+                                    <img ng-if="transaction.responce_code == '0' || transaction.responce_code == '20' || transaction.responce_code == '00'" ng-src="com/dist/img/icons/success.png">
+                                    <img ng-if="transaction.responce_code == '1' || transaction.responce_code == '30'" ng-src="com/dist/img/icons/fail.png">
+                                    <img ng-if="transaction.responce_code == '-1' || transaction.responce_code == '30' " ng-src="com/dist/img/icons/warning.png">
+                                </td>
+                                <!--<td><a ui-sref="app.service_name({ name : TerminalOBJ.selected_service })"><i class="blue-text">{{ customServiceName(TerminalOBJ.selected_service) }}</i></a></td>-->
+                            </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+
+
+
+        
+          <!-- display paginator-->
+                <div ng-include="'com/dist/ng/views/components/paginator.html'"></div>
+          <!-- /display pagenator-->
+
+       
+
+    </div>
+   
+
+    
+  
+
+
+
+
+   <!-- display paginator-->
+            <div ng-include="'com/dist/ng/views/modals/select_service_modal.html'"></div>
+      <!-- /display pagenator-->
+      
+   <!-- display select date modal-->
+            <div ng-include="'com/dist/ng/views/modals/select_date_modal.html'"></div>
+      <!-- /display select date modal -->
+      <!-- display select date modal-->
+            <div ng-include="'com/dist/ng/views/modals/test.html'"></div>
+      <!-- /display select date modal -->

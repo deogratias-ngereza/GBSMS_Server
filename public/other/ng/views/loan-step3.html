@@ -1,0 +1,91 @@
+<style>
+    table {
+        margin: auto;
+        font-family: 'Lato', sans-serif;
+        font-size: 15px;
+    }
+    
+    .gp_table_header {
+        background-color: orange;
+        color: black;
+        border-color: #6ea1cc !important;
+        text-transform: uppercase;
+    }
+</style>
+
+
+<div ng-controller="GP_LoanStep3Controller" class="table-responsive" style="background-color:white;" >
+
+     <!-- loading status -->
+     <center ng-if="loadingStatus" style="padding:20px;">
+            <img src="./dist/images/loaders/eclipse.svg" class="img-responsive" width="80" height="80"></img>
+            <br><br>
+            <span><i>{{loadingMsg}}</i></span>
+            <br>
+            <br>
+            <button ng-click="retry()" class="btn btn-warning btn-sm">Retry</button>
+        </center>
+
+
+    <!-- loading status -->    
+    <table ng-if="!loadingStatus" class="table table-bordered">
+
+        <thead class="gp_table_header">
+            <th>COMPANY</th>
+            <th>PRODUCT NAME</th>
+            <th>MONTHLY INT. RATE</th>
+            <th>AMOUNT PROVIDED</th>
+            <th>MAXIMUM LOAN AMT</th>
+            <th>TIME PERIOD</th>
+        </thead>
+
+
+
+        <tr ng-repeat="bank in list_of_banks">
+            <td>
+                <center>
+                    <img src="{{'dist/images/bank_images/' + bank.company_info.company_logo}}" class="img img-responsive" width="100" height="100">
+                </center>
+            </td>
+            <td>
+                <a ng-click="getInfoFor(bank.id)"> <span class="glyphicon glyphicon-arrow-right" ng-if="!isThisDetailedId(bank.id)">&nbsp&nbsp&nbspMore</span> <span class="glyphicon glyphicon-arrow-down" ng-if="isThisDetailedId(bank.id)">&nbsp&nbsp&nbspLess</span>  </a>
+                <div ng-if="isThisDetailedId(bank.id)" style="padding:2px">
+
+                        <blockquote>
+                            <dl class="dl-horizontal">
+                                <dt>Loan Purchase</dt><dd> {{ bank.loan_purchace }} </dd>
+                                <dt>Loan Processing Fee</dt><dd> {{ bank.loan_processing_fee }} </dd>
+                                <dt>Insurance Fee</dt><dd> {{ bank.insurance_fee }} </dd>
+                                <dt>Requirements</dt><dd>  </dd>
+                                <dt>Eligibility</dt><dd> {{ bank.req_eligibility }} </dd>
+                                <dt>Security Accepted</dt><dd> {{ bank.req_security_accepted }} </dd>
+                                <dt>Company</dt><dd> {{ bank.company_info.company_name }} </dd>
+                                <dt>Apply</dt><dd> <button style="color:white;background-color:orangered;padding:2px;">Apply</button> </dd>
+                                    
+                            </dl>
+                        </blockquote>
+                    
+
+                </div>
+            </td>
+            <td> {{ bank.monthly_interest_rate }} </td>
+            <td> 
+               <!-- <label class="warning"><span class="label label-default">{{AMOUNT_GIVEN | currency : "TZS     " }}</span></label>
+                <span class="glyphicon glyphicon-arrow-down"></span>-->
+                <label class="success"><span class="label label-success">{{ AMOUNT_GIVEN - ((AMOUNT_GIVEN  * (bank.insurance_fee/100)) + (AMOUNT_GIVEN  * (bank.loan_processing_fee/100))) | currency : "TZS     "}}</span></label>
+            </td>
+            <td> {{ bank.max_loan_amount | currency : "TZS     "}} </td>
+            <td> <center>
+                {{ bank.time_period }} <br>
+                <button ng-click="applyFor(bank)" class="btn btn-xs btn-warning">Apply</button>
+                </center>
+            </td>
+        </tr>
+
+
+
+    </table>
+
+    
+
+</div>

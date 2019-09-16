@@ -1,0 +1,398 @@
+<div id="products-bg" ng-controller="GP_LoanStep2Controller">
+    <div id="products-bg-overlay"></div>
+	
+		<div class="container">
+
+			<!--loading status-->
+			<div ng-if="loadingStatus">
+				<center style="padding:20px;">
+						<img src="./dist/images/loaders/eclipse.svg" class="img-responsive" width="80" height="80"></img>
+						<br><br>
+						<span><i>{{loadingMsg}}</i></span>
+						<br>
+						<br>
+						<button ng-click="retry()" class="btn btn-warning btn-sm">Retry</button>
+					</center>
+			</div>
+
+
+
+ 
+
+			<div ng-if="!loadingStatus">
+				
+
+
+				<!--filling forms data-->
+				<div ng-if="showFillingFormsStatus">
+					<div class="row">
+						<h2>
+							<center>This Information is required to provide you with the best Loan offers</center>
+						</h2>
+						<br>
+						<form action="pg3_loans" method="post" role="form" class="form contactForm">
+							<!--<div class="col-sm-4">
+								<label for="firstname" class="col-sm-1 control-label">FirstName</label>
+								<div class="form-group">
+										<input type="text" class="form-control" id="firstname" name="firstname" hint="firstname">		
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<label for="lastname" class="col-sm-1 control-label">LastName</label>
+								<div class="form-group">
+										<input type="text" class="form-control" id="lastname" name="lastname" hint="lastname">		
+								</div>
+							</div>
+
+							<div class="col-sm-4">
+								<label for="_contact" class="col-sm-1 control-label">Contact</label>
+								<div class="form-group">
+										<input type="text" class="form-control" id="_contact" name="_contact" hint="+255">		
+								</div>
+							</div>-->
+
+							
+
+
+							<div class="col-sm-4">
+								<div class="form-group">
+									<select ng-model="City" ng-init="City='-1'" ng-change="changer('City')" class="form-control" id="City" title="Please Select the City you live in" name="City" required>
+												<option value="-1">City</option>
+												<option value="Arusha">Arusha</option>
+												<option value="Dar es salaam">Dar es salaam</option>
+												<option value="Dodoma">Dodoma</option>
+												<option value="Geita">Geita</option>
+												<option value="Iringa">Iringa</option>
+												<option value="Kagera">Kagera</option>
+												<option value="Katavi">Katavi</option>
+												<option value="Kigoma">Kigoma</option>
+												<option value="Kilimanjaro">Kilimanjaro</option>
+												<option value="Lindi">Lindi</option>
+												<option value="Manyara">Manyara</option>
+												<option value="Mara">Mara</option>
+												<option value="Mbeya">Mbeya</option>
+												<option value="Morogoro">Morogoro</option>
+												<option value="Mtwara">Mtwara</option>
+												<option value="Mwanza">Mwanza</option>
+												<option value="Njombe">Njombe</option>
+												<option value="Pemba North">Pemba North</option>
+												<option value="Pemba South">Pemba South</option>
+												<option value="Pwani">Pwani</option>
+												<option value="Rukwa">Rukwa</option>
+												<option value="Ruvuma">Ruvuma</option>
+												<option value="Shinyanga">Shinyanga</option>
+												<option value="Simiyu">Simiyu</option>
+												<option value="Singida">Singida</option>
+												<option value="Tabora">Tabora</option>
+												<option value="Tanga">Tanga</option>
+												<option value="Zanzibar North">Zanzibar North</option>
+												<option value="Zanzibar South and Central">Zanzibar South and Central</option>
+												<option value="Zanzibar West">Zanzibar West</option>
+												</select>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="form-group">
+									<select ng-model="Workstation" ng-init="Workstation='-1'" ng-change="changer('Workstation')" class="form-control" id="Workstation" title="Please Select your Work Location" id="Workstation" name="Workstation" required>
+											<option value="-1">Work station</option>
+												<option value="Arusha">Arusha</option>
+												<option value="Dar es salaam">Dar es salaam</option>
+												<option value="Dodoma">Dodoma</option>
+												<option value="Geita">Geita</option>
+												<option value="Iringa">Iringa</option>
+												<option value="Kagera">Kagera</option>
+												<option value="Katavi">Katavi</option>
+												<option value="Kigoma">Kigoma</option>
+												<option value="Kilimanjaro">Kilimanjaro</option>
+												<option value="Lindi">Lindi</option>
+												<option value="Manyara">Manyara</option>
+												<option value="Mara">Mara</option>
+												<option value="Mbeya">Mbeya</option>
+												<option value="Morogoro">Morogoro</option>
+												<option value="Mtwara">Mtwara</option>
+												<option value="Mwanza">Mwanza</option>
+												<option value="Njombe">Njombe</option>
+												<option value="Pemba North">Pemba North</option>
+												<option value="Pemba South">Pemba South</option>
+												<option value="Pwani">Pwani</option>
+												<option value="Rukwa">Rukwa</option>
+												<option value="Ruvuma">Ruvuma</option>
+												<option value="Shinyanga">Shinyanga</option>
+												<option value="Simiyu">Simiyu</option>
+												<option value="Singida">Singida</option>
+												<option value="Tabora">Tabora</option>
+												<option value="Tanga">Tanga</option>
+												<option value="Zanzibar North">Zanzibar North</option>
+												<option value="Zanzibar South and Central">Zanzibar South and Central</option>
+												<option value="Zanzibar West">Zanzibar West</option>
+											</select>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="form-group">
+									<select ng-model="Monthly_net_salary" ng-init="Monthly_net_salary='-1'" ng-change="changer('Monthly_net_salary')" class="form-control" id="Monthly_net_salary" title="Please Select your Monthly Net Salary" name="Monthly_net_salary" required>
+												<option value="-1">Monthly Net Salary</option>
+											<option value="Below 300,000">Below 300,000</option>
+											<option value="300,000-899,999">300,000-899,999</option>
+											<option value="900,000-1,999,999">900,000-1,999,999</option>
+											<option value="2,000,000-4,999,999">2,000,000-4,999,999</option>
+											<option value="5,000,000-9,999,999">5,000,000-9,999,999</option>
+											<option value="10,000,000-19,999,999">10,000,000-19,999,999</option>
+											<option value="20,000,000 and Above">20,000,000 and Above</option>
+											</select>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="form-group">
+									<select ng-model="Occupation" ng-init="Occupation='-1'" ng-change="changer('Occupation')" class="form-control" id="Occupation" title="Enter Your Occupation" name="Occupation" required>
+																<option value="-1">Your Occupation</option>
+											<option value="Full Time(Private)">Full Time(Private)</option>
+											<option value="Government Worker">Government Worker</option>
+											<option value="Part Time (Private)">Part Time (Private)</option>
+											<option value="Temp Contract">Temp Contract</option>
+											<option value="Contract Staff">Contract Staff</option>
+											<option value="Outsourced Staff">Outsourced Staff</option>
+											<option value="Self-Employed">Self-Employed</option>
+											<option value="Unemployed">Unemployed</option>
+											<option value="Student">Student</option>
+											<option value="Retired">Retired</option>
+											<option value="Housewife">Housewife</option>
+											<option value="other">other</option>
+											</select>
+								</div>
+							</div>
+
+							<div class="col-sm-4">
+								<div class="form-group">
+									<select ng-model="Time_at_job" ng-init="Time_at_job='-1'" ng-change="changer('Time_at_job')" class="form-control" id="Time_at_job" title="Time at Current Job?" name="Time_at_job" required>
+											<option value="-1">Time at current job?</option>
+											<option value="Less than 6 Months">Less than 6 Months</option>
+											<option value="9 Months">9 Months</option>
+											<option value="12 Months">12 Months</option>
+											<option value="18 Months">18 Months</option>
+											<option value="More than 24 Months">More than 24 Months</option>
+											</select>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="form-group">
+									<select ng-model="Cont_emp_time" ng-init="Cont_emp_time='-1'" ng-change="changer('Cont_emp_time')" class="form-control" id="Cont_emp_time" title="Continous Employment Time?" name="Cont_emp_time" required>
+											<option value="-1">Continuous employment time?</option>
+											<option value="Less than 12 Months">Less than 12 Months</option>
+											<option value="13-18 Months">13-18 Months</option>
+											<option value="19-24 Months">19-24 Months</option>
+											<option value="24-36 Months">24-36 Months</option>
+											<option value="36 Months or More">36 Months or More</option>
+											</select>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="form-group">
+									<select ng-model="Other_loans" ng-init="Other_loans='-1'" ng-change="changer('Other_loans')" class="form-control" id="Other_loans" title="Do you have Other Loans in place? " name="Other_loans" required>
+											<option value="-1">Do you have other loans in place?</option>
+											<option value="No">No</option>
+											<option value="Yes">Yes</option>
+						
+											</select>
+								</div>
+							</div>
+
+							<div class="col-sm-4">
+								<label for="xDoB" class="col-sm-3 control-label"> Birth Date </label>
+								
+							</div>
+							<div class="col-sm-4">
+								<div class="form-group" class="col-sm-3">
+									<div>
+										<input ng-model="SELECTED_DATE" type="text" hint="dd-mm-yyyy" class="form-control" id="DoB" name="DoB" required>
+									</div>
+								</div>
+							</div>
+
+							
+							
+
+						</form>
+					</div>
+
+					<div class="row">
+							<!--
+							<div class="col-sm-4">
+								<label for="short_story" class="col-sm-1 control-label">Short Story</label>
+								<div class="form-group">
+										<input type="text" class="form-control" id="short_story" name="short_story" hint="lastname">		
+								</div>
+							</div>
+
+							<div class="col-sm-4">
+								<label for="full_description" class="col-sm-1 control-label">Full Description</label>
+								<div class="form-group">
+										<input type="text" class="form-control" id="full_description" name="full_description" hint="+255">		
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<label for="stats" class="col-sm-1 control-label">Status</label>
+								<div class="form-group">
+										<input type="text" class="form-control" id="status" name="status" hint="firstname">		
+								</div>
+							</div>
+							-->
+					</div>
+
+					<div class="row">
+							<div class="form-group">
+									<div class="col-md-6 col-md-offset-4">
+										<div class="submit">
+	
+											<a class="hvr-grow"><button ng-click="goToStep3()" class="btn btn-default" id="bonyeza">Get Quote</button></a>
+										</div>
+									</div>
+								</div>
+					</div>
+
+
+				</div>
+				<!--/filling forms data-->
+			</div>
+
+
+
+			<div ng-if="!loadingStatus">
+				
+
+
+
+				<!--user data filling forms data-->
+				<div ng-if="!showFillingFormsStatus">
+					
+					<div class="row">
+						<h2>
+							<center>You can edit this information in Account DashBoard.</center>
+						</h2>
+						<br>
+						<form action="pg3_loans" method="post" role="form" class="form contactForm">
+							<div class="col-sm-4">
+								<label for="firstname" class="col-sm-1 control-label"> FirstName </label>
+								<div class="form-group">
+										<input ng-model="fillingProfData.first_name" type="text" class="form-control" id="filled_firstname" name="firstname" readonly>		
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<label for="lastname" class="col-sm-1 control-label"> LastName </label>
+								<div class="form-group">
+										<input ng-model="fillingProfData.last_name" type="text" class="form-control" id="filled_lastname" name="lastname" readonly>		
+								</div>
+							</div>
+
+							<div class="col-sm-4">
+								<label for="contact" class="col-sm-1 control-label"> Phone </label>
+								<div class="form-group">
+										<input ng-model="fillingProfData.contact" type="text" class="form-control" id="filled_contact" name="contact" readonly>		
+								</div>
+							</div>
+							
+							<div class="col-sm-4">
+								<label for="City" class="col-sm-1 control-label"> City </label>
+								<div class="form-group">
+										<input ng-model="fillingProfData.city" type="text" class="form-control" id="filled_City" name="City" readonly>		
+								</div>
+							</div>
+
+
+
+							
+							<div class="col-sm-4">
+								<label for="Workstation" class="col-sm-1 control-label"> Workstation </label>
+								<div class="form-group">
+										<input ng-model="fillingProfData.workstation" type="text" class="form-control" id="filled_Workstation" name="Workstation" readonly>		
+								</div>
+							</div>
+							
+
+
+
+
+							<div class="col-sm-4">
+								<label for="Monthly_net_salary" class="col-sm-1 control-label"> Monthly_net_salary </label>
+								<div class="form-group">
+										<input ng-model="fillingProfData.monthly_net_salary" type="text" class="form-control" id="filled_Monthly_net_salary" name="filled_Monthly_net_salary" readonly>		
+								</div>
+							</div>
+
+
+							<div class="col-sm-4">
+								<label for="Occupation" class="col-sm-1 control-label"> Occupation </label>
+								<div class="form-group">
+										<input ng-model="fillingProfData.occupation" type="text" class="form-control" id="filled_Occupation" name="Occupation" readonly>		
+								</div>
+							</div>
+
+
+
+
+
+							<div class="col-sm-4">
+								<label for="Time_at_job" class="col-sm-1 control-label"> Time_at_job </label>
+								<div class="form-group">
+										<input ng-model="fillingProfData.time_at_job" type="text" class="form-control" id="filled_Time_at_job" name="Time_at_job" readonly>		
+								</div>
+							</div>
+
+
+
+							<div class="col-sm-4">
+								<label for="bank" class="col-sm-1 control-label"> Bank </label>
+								<div class="form-group">
+										<input ng-model="fillingProfData.bank_name" type="text" class="form-control" id="filled_Bank" name="bank" readonly>		
+								</div>
+							</div>
+
+
+
+							<div class="col-sm-4">
+								<label for="Cont_emp_time" class="col-sm-1 control-label"> Cont_emp_time </label>
+								<div class="form-group">
+										<input ng-model="fillingProfData.cont_emp_time" type="text" class="form-control" id="filled_Cont_emp_time" name="Cont_emp_time" readonly>		
+								</div>
+							</div>
+
+
+
+
+							<div class="col-sm-4">
+								<label for="Other_loans" class="col-sm-1 control-label">Other_loans </label>
+								<div class="form-group">
+										<input ng-model="fillingProfData.other_loan" type="text" class="form-control" id="filled_Other_loans" name="Other_loans" readonly>		
+								</div>
+							</div>
+
+
+
+
+							<div class="col-sm-4">
+								<label for="dob" class="col-sm-1 control-label">Birth Date</label>
+								<div class="form-group">
+										<input ng-model="fillingProfData.dob" type="text" class="form-control" id="DoB" name="dob" readonly>		
+								</div>
+							</div>
+								
+						</form>
+					</div>
+
+
+					<div class="row">
+						<center>
+							<div class="submit">
+								<a class="hvr-grow"><button ng-click="goToStep3()" class="btn btn-default" id="bonyeza">Continue</button></a>
+								<a class="hvr-grow" ui-sref="app.dashboard"><button class="btn btn-success" id="bonyeza">Edit</button></a>
+							</div>
+							
+						</center>
+					</div>
+
+				</div>
+				<!--user data filling forms data-->
+			</div>
+
+		</div>
+</div>

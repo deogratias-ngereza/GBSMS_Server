@@ -1,0 +1,86 @@
+
+
+<div class="container" style="background-color: white;">
+
+    <!-- loader -->
+    <div ng-if="summaryLoaderBlock" class="row" id="products-bg">
+        <div id="products-bg-overlay"></div>
+        <div class="about-bg-heading">
+            <center>
+               <h1> {{ summaryMsg }}</h1>
+               <img ng-if="summaryLoaderIndicator" src="./dist/images/loaders/eclipse.svg" class="img-responsive" width="70" height="70"></img>
+                <br><br>
+                <button ng-click="refresh()" class="btn btn-warning btn-sm">Refresh</button>
+            </center>
+            
+        </div>
+    </div>
+    <!-- /loader -->
+
+
+    <div ng-if="!summaryLoaderBlock" class="row" id="products-bg">
+    	<div id="products-bg-overlay"></div>
+    	<div class="about-bg-heading">
+            <center>
+               <h1> Thank you for applying getPesa and Below is the Summary of your order</h1>
+            </center>
+            
+        </div>
+
+    	<div class="col-sm-5">
+    		<center style="margin-top:20px;">
+            	<img width="100" height="100" src="dist/images/my_get_pesa.png" class="img-responsive img-circle" style="background-color: white; ">
+                <br>
+                <img width="100" height="100" src="dist/images/all/arrow-down-6-512.gif" class="img-responsive" style="">
+                
+	           
+            </center>
+    	</div>
+
+
+    	<div class="col-sm-7">
+
+    		<blockquote style="border-left: 5px solid #f37422;margin-top:20px;">
+	            
+	            <dl class="dl-horizontal">
+
+	                <dt>Username</dt><dd> {{ loan_summary.customer_username }}</dd>
+	                <dt>Email</dt><dd> {{ loan_summary.customer_email }}</dd>
+	                <dt>Phone</dt><dd> {{ loan_summary.customer_phone }}</dd>
+                    <dt>Amount</dt>
+                    <dd>
+                        <label class="warning"><span class="label label-default">{{ loan_summary.original_amount | currency : "TZS   "}}</span></label>
+                    </dd>
+	                <dt>Amount - Costs</dt>
+	                <dd> 
+	                	<label class="warning"><span class="label label-success">{{ loan_summary.amount | currency : "TZS   "}}</span></label>
+	                 from 
+	                 <label class="warning"><span class="label label-warning">{{ loan_summary.company_name }}</span></label>
+
+	                </dd>
+	                <dt>Time </dt><dd> {{ loan_summary.created_at }}</dd>
+                    <dt>Processing Fee </dt><dd> {{ loan_summary.processing_fee }} %</dd>
+                    <dt>Insurance Fee </dt><dd> {{ loan_summary.insurance_fee }} %</dd>
+	                
+	            </dl>
+	            
+	        </blockquote>
+    		
+    	</div>
+    	<center>
+    		<a ui-sref="app"><button class="btn btn-warning">GetPesa</button></a>	
+
+    	</center>
+    	
+    </div>
+
+
+
+
+
+   <!--include bankdetails-->
+   <div ng-if="bankDetailsBlock">
+        <div ng-include="'./dist/ng/views/components/bank_details.html'"></div>
+   </div>
+
+</div>

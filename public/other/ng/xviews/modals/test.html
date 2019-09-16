@@ -1,0 +1,36 @@
+
+
+ <!-- Modal Structure -->
+  <div id="test" class="modal">
+    <div class="modal-content">
+
+      <div class="row">
+        <div class="col s6">
+            <center>
+              <img src="com/dist/img/com_modal_1.png">
+            </center>
+            <br><br>
+            <center>
+                <a class="modal-action modal-close waves-effect waves-light orange btn btn-large"><i class="material-icons right">toc</i>OK</a>
+            </center>
+            
+        </div>
+        <div class="col s6">
+              <div class="chip">
+                <img src="com/dist/img/com_logo.png" alt="Contact Person">
+                Admin
+              </div>
+              
+              <ul class="collection with-header" ng-repeat="s in SIMPLE_SERVICES" repeat-done="initModals()">
+                <img src="com/dist/img/icons/setting.png"> &nbsp&nbsp<a ng-click="getService(s)" class="modal-action modal-close orange-text">{{ customServiceName(s) }}</a>
+              </ul>
+            
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">Dismiss</a>
+    </div>
+  </div>
+  
+<!--/modals-->

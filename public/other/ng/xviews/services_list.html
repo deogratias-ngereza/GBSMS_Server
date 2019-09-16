@@ -1,0 +1,127 @@
+
+<div>
+
+
+    <div class="row">
+        <center><img src="com/dist/img/com_back1.png"></center>
+        <!--<center><h5 class="green-text">Services, we offer</h5></center>-->
+    </div>
+
+    <!-- small loading effect-->
+    <div ng-if= "loading" class="row">
+        <center>
+            
+            <div class="preloader-wrapper small active">
+                <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+                </div>
+            </div>
+
+        </center>
+    </div>
+    <!-- /small loading effect-->
+
+
+
+
+ <div ng-if= "!loading" class="row">
+        <div class="col s1"></div>
+        <div class="col s10">
+            <center>
+            <div class="card light-blue lighten-4">
+                <div class="card-content orange-text" ng-init="basic_view = 0">
+                    <span class="card-title black-text">
+                      <img ng-src="com/dist/img/icons/setting.png">&nbsp&nbsp&nbsp&nbsp
+                      <b class="orange-text"> <e class="green-text" >{{ GlobalOBJ.services_no }}</e>&nbsp&nbspSERVICES</b>
+                    </span>
+                </div>
+            </div>
+            </center>
+        </div>
+        <div class="col s1"></div>
+    </div>
+
+
+
+
+
+
+    <div ng-if= "!loading" class="row">
+         <div class="row">
+            <div class="col s12">
+                 <table class="striped">
+                    <thead>
+                        <tr>
+                            <th data-field="service">SERVICE NAME</th>
+                            <th data-field="commission rate">COMMISSION RATE</th>
+                            <th data-field="status">STATUS</th>
+                            <th data-field="action">ACTION</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr class="xmyRow" ng-repeat="service in ServicesListOBJ" repeat-done="initModals()">
+                            <td>
+                                <a class="collection-item" ui-sref="app.service_name({ name : service.service_name})">
+                                    <img ng-src="com/dist/img/icons/setting.png">&nbsp&nbsp
+                                    {{ customServiceName(service.service_name) }}</a>
+                            </td>
+                            <td> <span class="orange-text"> {{ service.service_commission }}%</span></td>
+                            <td> <img ng-src="com/dist/img/icons/success.png"> </td>
+                            <td> 
+                                <a class="collection-item" ui-sref="app.service_name({ name : service.service_name})">
+                                    <!--<img ng-src="com/dist/img/icons/arrow_2.png">--><span class="blue-text">view</span></a>
+                             </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+     <!-- data -->
+    <!--<div ng-if= "!loading" class="row">
+        <div class="row">
+            <div class="col s4">
+            </div>
+
+
+            <div class="col s4">
+                <center>
+                    <div class="card lime lighten-5">
+                        <div class="card-content orange-text">
+                            <span class="card-title black-text"><b>
+                            <img ng-src="com/dist/img/icons/list_1.png">&nbsp&nbsp
+                            Services ({{ GlobalOBJ.services_no }})</b></span>
+                            <p>
+                                <div class="collection" ng-repeat="service in ServicesListOBJ" repeat-done="initModals()">
+                                    <a class="collection-item" ui-sref="app.service_name({ name : service.service_name})">
+                                    <img ng-src="com/dist/img/icons/setting.png">&nbsp&nbsp
+                                    {{ customServiceName(service.service_name) }} <span class="orange-text"> ({{ service.service_commission }}%)</span></a>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </center>
+            </div>
+
+
+            <div class="col s4">
+            </div>
+        </div>
+      
+        
+    </div>-->
+
+
+
+
+</div>

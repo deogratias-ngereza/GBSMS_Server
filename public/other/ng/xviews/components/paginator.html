@@ -1,0 +1,16 @@
+<div  class="row">
+            <div class="col s12">
+                <center>
+                   <ul class="pagination">
+                        <li ng-if="show_paginator"><a ng-click="goToPage(-1)">
+                            <img ng-src="com/dist/img/icons/prev.png">
+                        </a></li>
+                        <img ng-if="!show_paginator" ng-src="com/dist/img/loaders/ajax-loader-1.gif">
+                        <li ng-if="show_paginator"><a ng-click="goToPage(1)">
+                            <img ng-src="com/dist/img/icons/next.png">
+                        </a></li>
+                    </ul> 
+                </center>
+                
+            </div>
+        </div>

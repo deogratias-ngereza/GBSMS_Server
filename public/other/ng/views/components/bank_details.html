@@ -1,0 +1,121 @@
+ <!-- abt bank-->
+
+
+
+    <div class="row" ng-if="bankDetailsLoader">
+        <!-- loader -->
+        <div  class="row" id="xproducts-bg">
+            <div id="xproducts-bg-overlay"></div>
+            <div class="about-bg-heading">
+                <center>
+                   <h1> {{ bankDetailsLoaderMsg }}</h1>
+                   
+                </center>
+                
+            </div>
+        </div>
+        <!-- /loader -->
+    </div>
+    
+
+
+
+    <div class="row" ng-if="!bankDetailsLoader">
+        <div class="col-xs-12 hidden-sm col-md-5">
+
+            <div class="about-left">
+                <br>
+                <br>
+                <br>
+                <left> <img ng-src="./dist/images/bank_images/{{COMPANY_OBJ.company_logo}}" alt=""> </left>
+                    <h2>{{ COMPANY_OBJ.company_name }} Bank</h2>
+                    <p>{{ COMPANY_OBJ.info_introduction }} </p>
+            </div>
+
+        </div>
+
+        <!--about wrapper right-->
+        <div class="col-xs-10 col-md-7">
+            <div class="about-right">
+                <div class="about-right-heading">
+                    <br>
+                    <br>
+                    <br>
+                    <h1>More About {{ COMPANY_OBJ.company_name }} Bank</h1>
+                </div>
+
+                <div class="about-right-boot">
+                    <div class="about-right-wrapper">
+                        <a>
+                            <h3>Detailed Information</h3>
+                        </a>
+                        <p>{{ COMPANY_OBJ.info_details }}</p>
+                    </div>
+                </div>
+
+                <div class="about-right-best">
+                    <div class="about-right-wrapper">
+                        <a>
+                            <h3>What We Offer</h3>
+                        </a>
+                        <p>{{ COMPANY_OBJ.info_offers }}</p>
+                    </div>
+                </div>
+
+                <div class="about-right-support">
+                    <div class="about-right-wrapper">
+                        <a>
+                            <h3>Short History</h3>
+                        </a>
+                        <p>{{ COMPANY_OBJ.info_history }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="!bankDetailsLoader">
+        <div class="col-xs-12 hidden-sm col-md-7">
+
+            <div class="about-left">
+                <div class="google-maps">
+                    <div ng-bind-html="map"></div>
+                    <!--<iframe id="gFrame" ng-src="{{ COMPANY_OBJ.g_map_link }}" 
+                        width="600" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+                </div>
+            </div>
+
+        </div>
+
+        <!--about wrapper right-->
+        <div class="col-xs-10 col-md-5">
+            <div class="about-right">
+                <div class="about-right-heading">
+                    <h2>CONTACT US</h2>
+                    <p>
+                        <b>Head Office:</b>
+                        <br>
+                        <br> {{ COMPANY_OBJ.location_name }}
+                        <br>
+                        <br> {{ COMPANY_OBJ.full_address }}
+                        <br>
+                        <br> {{ COMPANY_OBJ.city }}
+                        <br>
+                        <br>
+                        <b>Other Locations:</b> {{ COMPANY_OBJ.other_locations }}
+                        <br>
+                        <br>
+                        <b>Phone:</b> {{ COMPANY_OBJ.phone1 }} &nbsp,&nbsp {{ COMPANY_OBJ.phone2 }} &nbsp,&nbsp {{ COMPANY_OBJ.phone3 }}
+                        <br>
+                        <br>
+                        <b>Email:</b> {{ COMPANY_OBJ.mail1 }}
+                        <br>
+                        <br>
+                        <b>Website:</b>
+                        <a target="_blank" ng-href="http://{{ COMPANY_OBJ.website_url }}">{{ COMPANY_OBJ.website_url }}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>

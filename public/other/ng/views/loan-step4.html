@@ -1,0 +1,49 @@
+
+
+
+
+
+
+
+
+
+
+<!--about wrapper left-->
+<div class="container" style="background-color:white;" ng-controller="GP_LoanStep4Controller">
+    <div class="row">
+            <div class="col-sm-12" id="products-bg">
+                <div id="products-bg-overlay"></div>
+                <div class="about-bg-heading">
+                    <center>
+                        <img src="dist/images/my_get_pesa.png" class="img-responsive img-circle" width="80" height="80">
+                    </center>
+                    <h1> Help Us Get in Touch with you </h1>
+                </div>
+
+                <center>
+                    <form class="form-inline" style="padding:10px;">
+                        <div class="form-group">
+                            <input type="text" ng-model="PROFILE.first_name" class="form-control" id="FirstName" name="FirstName" placeholder="Enter Your First Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" ng-model="PROFILE.last_name" class="form-control" id="LastName" name="LastName" placeholder="Enter Your Last Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input name="Contact" ng-model="PROFILE.contact" class="form-control" type="text" name="Contact" placeholder="Enter Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="Bank_Name" value="AZANIA BANK">
+                        </div>
+                        <a class="hvr-grow" ui-sref="app.loan_step_summary"><button type="submit" class="btn btn-default" id="bonyeza">Submit</button></a>
+                    </form>
+                </center>
+                
+                <p1 style="font-size:25px; font-color: white;">
+                    <center>You will Receive a call from us within 48 Hours.</center>
+                </p1>
+            </div>
+            
+     </div>
+
+
+</div>

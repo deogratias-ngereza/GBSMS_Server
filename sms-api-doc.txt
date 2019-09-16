@@ -1,0 +1,113 @@
+
+
+
+*ACCOUNT*
+api_key = HASSANBL01
+account_no = $2a$10$OQ3xEhwgXdtO8/ucDNUTpeAwvtuMHQ6v/.qIRX0vxUt0odFXhIrrC
+
+*TEMP URL*
+http://4328f1b3.ngrok.io
+
+*NOTE:*
+# header Content type should be application/json
+# on post - body should be raw json data
+
+
+API-SAMPLES
+[1] *my account*
+  url: http://4328f1b3.ngrok.io/gmtech-sms-api/account
+  method: POST
+  header: Content-Type App/Json
+  json-body:
+	{
+"account" : 
+		{
+"api_key" : "$2a$10$OQ3xEhwgXdtO8/ucDNUTpeAwvtuMHQ6v/.qIRX0vxUt0odFXhIrrC",
+
+		"account_no":"100001"
+	
+	}
+}
+
+
+[2]*send_sms*
+  url: http://4328f1b3.ngrok.io/gmtech-sms-api/send_sms
+  method: POST
+  header: Content-Type App/Json
+  json-body:
+	{
+"account" : 
+		{
+"api_key" : "$2a$10$OQ3xEhwgXdtO8/ucDNUTpeAwvtuMHQ6v/.qIRX0vxUt0odFXhIrrC",
+
+		"account_no":"100001"
+}
+	 "message" : {
+		"text" : "SMS Body",
+		"recepient_phone" : "+255..",
+		"sender_name":"INFO"
+		}	
+	}
+
+
+
+[3]*send_bulky_sms*
+  url: http://4328f1b3.ngrok.io/gmtech-sms-api/send_bulky_sms
+  method: POST
+  header: Content-Type App/Json
+  json-body:
+	{
+"account" : 
+		{
+"api_key" : "$2a$10$OQ3xEhwgXdtO8/ucDNUTpeAwvtuMHQ6v/.qIRX0vxUt0odFXhIrrC",
+
+		"account_no":"100001"
+}
+	 "message" : {
+		"text" : "SMS Body",
+		"sender_name":"INFO"
+		}
+	"recepients" : ["+255...","+255..",.....n]	
+	}
+
+
+[4]*sms_history by date status/start_date/end_date/status*
+  url: http://4328f1b3.ngrok.io/gmtech-sms-api/history/2019-01-01/2020-01-01/BULKY
+  method: POST
+  header: Content-Type App/Json
+  json-body:
+	{
+		"account" : 
+		{
+		"api_key" : "$2a$10$OQ3xEhwgXdtO8/ucDNUTpeAwvtuMHQ6v/.qIRX0vxUt0odFXhIrrC",
+		"account_no":"100001"
+		}
+	}
+
+[5]*sms dlr by receipt no*
+  url: http://4328f1b3.ngrok.io/gmtech-sms-api/dlr/<receipt_no>
+  method: POST
+  header: Content-Type App/Json
+  json-body:
+	{
+		"account" : 
+		{
+		"api_key" : "$2a$10$OQ3xEhwgXdtO8/ucDNUTpeAwvtuMHQ6v/.qIRX0vxUt0odFXhIrrC",
+		"account_no":"100001"
+		}
+	}
+
+[6]*sms batch-dlr by receipt no*
+  url: http://4328f1b3.ngrok.io/gmtech-sms-api/batch_dlr/<receipt_no>
+  method: POST
+  header: Content-Type App/Json
+  json-body:
+	{
+		"account" : 
+		{
+		"api_key" : "$2a$10$OQ3xEhwgXdtO8/ucDNUTpeAwvtuMHQ6v/.qIRX0vxUt0odFXhIrrC",
+		"account_no":"100001"
+		}
+	}
+
+
