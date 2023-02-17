@@ -16,7 +16,7 @@
         "slim/slim": "^3.1",
         "slim/php-view": "^2.0",
         "monolog/monolog": "^1.17",
-        "firebase/php-jwt": "^5.0",
+        "firebase/php-jwt": "^6.0",
         "illuminate/database": "~5.1",
         "twilio/sdk": "5.*",
         "phpmailer/phpmailer": "^6.0",
